@@ -40,7 +40,7 @@ To be able to authenticate as the remote user using the private key of the local
 
 On your local machine:
 ```
-ssh-copy-id -i ~/.ssh/id_ed25519.pub -p <PORT> <USER>@<HOST_ADDRESS>
+ssh-copy-id -p <PORT> <USER>@<HOST_ADDRESS>
 ```
 
 If that command fails, you can use the following command to copy the public key over ssh manually.
