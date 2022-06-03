@@ -16,7 +16,7 @@ Allowing to log in as root to your server is a security threat. To mitigate this
 
 On your server:
 ```
-adduser <USER> && usermod -aG sudo <USER>
+useradd <USER> && usermod -aG sudo <USER>
 ```
 
 This will ask you to set a password for the user. Now you should be able to log into your newly created user over SSH.
@@ -39,6 +39,12 @@ ssh-keygen -t ed25519
 To be able to authenticate as the remote user using the private key of the local user, the public key of the local user must be added to the authorized keys of the remote user. The following command will create an `.ssh` directory and `.ssh/authorized_keys` file in the home directory of the remote user and adds the public key of your local user to the file.
 
 On your local machine:
+```
+ssh-copy-id -i ~/.ssh/id_ed25519.pub -p <PORT> <USER>@<HOST_ADDRESS>
+```
+
+If that command fails, you can use the following command to copy the public key over ssh manually.
+
 ```
 cat ~/.ssh/id_ed25519.pub | ssh <USER>@<HOST_ADDRESS> "mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
