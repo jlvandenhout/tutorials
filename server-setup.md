@@ -16,7 +16,7 @@ Allowing to log in as root to your server is a security threat. To mitigate this
 
 On your server:
 ```
-useradd <USER> && usermod -aG sudo <USER>
+adduser <USER> && adduser <USER> sudo
 ```
 
 This will ask you to set a password for the user. Now you should be able to log into your newly created user over SSH.
